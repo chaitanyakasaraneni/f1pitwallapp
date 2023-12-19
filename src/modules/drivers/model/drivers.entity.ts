@@ -1,6 +1,6 @@
 import { BaseEntity } from '../../entity/base.entity';
 import { Results } from '../../results/model/results.entity';
-import { Entity, Column, Index, OneToMany } from 'typeorm';
+import { Entity, Column, Index, ManyToMany } from 'typeorm';
 
 @Entity('drivers')
 export class Drivers extends BaseEntity {
@@ -36,6 +36,6 @@ export class Drivers extends BaseEntity {
     })
     driverNumber: number;
 
-    @OneToMany(() => Results, (raceResult) => raceResult.driver)
+    @ManyToMany(() => Results, (raceResult) => raceResult.driver)
     raceResults: Results[];
 }

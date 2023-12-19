@@ -15,6 +15,14 @@ export class Races extends BaseEntity {
     raceId: string;
 
     @Column({
+        name: 'race_name',
+        length: 100,
+        unique: true,
+        type: 'varchar'
+    })
+    raceName: string;
+
+    @Column({
         name: 'year',
         type: 'int'
     })

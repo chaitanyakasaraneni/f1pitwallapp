@@ -1,7 +1,6 @@
 import { BaseEntity } from '../../entity/base.entity';
 import { Races } from '../../races/model/races.entity';
-import { Results } from '../../results/model/results.entity';
-import { Entity, Column, Index, OneToMany, JoinColumn } from 'typeorm';
+import { Entity, Column, Index, OneToMany, OneToOne } from 'typeorm';
 
 @Entity('circuits')
 export class Circuits extends BaseEntity {
@@ -42,11 +41,4 @@ export class Circuits extends BaseEntity {
         { eager: true }
     )
     races: Races[];
-
-    @OneToMany(
-        () => Results,
-        (raceResult) => raceResult.driver,
-        { eager: true }
-    )
-    raceResults: Results[];
 }

@@ -1,27 +1,30 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsArray, ValidateNested } from 'class-validator';
-import { RacesResponseDto } from '../../races/dto/races-response.dto';
+import { CircuitResponseDto } from '../../circuits/dtos/circuit-response.dto';
 
-export class CircuitResponseDto {
+export class RaceResponseDto {
   @ApiProperty()
   id: string;
 
   @ApiProperty()
-  circuitId: string;
+  raceId: string;
 
   @ApiProperty()
-  circuitName: string;
+  raceName: string;
 
   @ApiProperty()
-  locationCountry: string;
+  year: Number;
 
   @ApiProperty()
-  lengthKm: number;
+  raceNumber: number;
+
+  @ApiProperty()
+  date: Date;
 
   @ApiProperty()
   @IsArray()
-  @Type(() => RacesResponseDto)
+  @Type(() => CircuitResponseDto)
   @ValidateNested({ each: true })
-  races: RacesResponseDto[];
+  circuit: CircuitResponseDto[];
 }

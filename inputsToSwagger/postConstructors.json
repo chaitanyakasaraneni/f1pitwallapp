@@ -1,0 +1,16 @@
+{
+    "post": [
+        {
+            "constructorId": "mclaren",
+            "constructorName": "McLaren F1",
+            "originCountry": "England",
+            "raceResults": []
+        },
+        {
+            "constructorId": "merc",
+            "constructorName": "Mercedes-AMG Petronas F1",
+            "originCountry": "England",
+            "raceResults": []
+        }
+    ]
+}

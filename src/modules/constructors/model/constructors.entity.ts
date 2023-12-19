@@ -1,6 +1,6 @@
-import { BaseEntity } from '../../entity/base.entity';
 import { Results } from '../../results/model/results.entity';
-import { Entity, Column, Index, OneToMany } from 'typeorm';
+import { BaseEntity } from '../../entity/base.entity';
+import { Entity, Column, Index, OneToMany, OneToOne } from 'typeorm';
 
 @Entity('constructors')
 export class Constructors extends BaseEntity {
@@ -29,6 +29,10 @@ export class Constructors extends BaseEntity {
     })
     originCountry: string;
 
-    @OneToMany(() => Results, (raceResult) => raceResult.driver)
-    raceResults: Results[];
+    @OneToMany( 
+        () => Results,
+        (result) => result.team,
+        { eager: true }
+    )
+    results: Results[];
 }

@@ -13,7 +13,6 @@ export default class CircuitsTransformer {
             locationCountry: circuit.locationCountry,
             lengthKm: circuit.lengthKm,
             races: circuit.races || [],
-            results: circuit.raceResults || [],
             id: circuit.id,
         }) as CircuitResponseDto;
     }

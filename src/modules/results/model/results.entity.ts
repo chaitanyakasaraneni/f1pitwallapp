@@ -1,29 +1,28 @@
 import { BaseEntity } from '../../entity/base.entity';
-import { Circuits } from '../../circuits/model/circuits.entity';
-import { Constructors } from '../../constructors/model/contructors.entity';
+import { Constructors } from '../../constructors/model/constructors.entity';
 import { Drivers } from '../../drivers/model/drivers.entity';
-import { Entity, Column, JoinColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, JoinColumn, ManyToOne, OneToOne, ManyToMany } from 'typeorm';
+import { Races } from '../../races/model/races.entity';
 
 @Entity('results')
 export class Results extends BaseEntity {
 
-    @ManyToOne(
+    @ManyToMany(
         () => Drivers,
         (driver) => driver.raceResults
     )
     @JoinColumn({ name: 'drivers_short_id', referencedColumnName: 'driverId' })
     driver: Drivers;
 
-    @ManyToOne(
-        () => Circuits,
-        (circuit) => circuit.raceResults
+    @OneToOne(
+        () => Races
     )
-    @JoinColumn({ name: 'circuit_short_id', referencedColumnName: 'circuitId' })
-    circuit: Circuits;
+    @JoinColumn({ name: 'race_short_id', referencedColumnName: 'raceId' })
+    race: Races;
 
     @ManyToOne(
         () => Constructors,
-        (team) => team.raceResults
+        (team) => team.results
     )
     @JoinColumn({ name: 'constructors_short_id', referencedColumnName: 'constructorId' })
     team: Constructors;
