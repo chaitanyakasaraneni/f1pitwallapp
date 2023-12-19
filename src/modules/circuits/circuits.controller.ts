@@ -9,27 +9,31 @@ import { CircuitResponseDto } from './dtos/circuit-response.dto';
 import { CreateCircuitDto } from './dtos/create-circuit.dto';
 
 
-@ApiTags('circuits')
+@ApiTags('circuitsAPI')
 @Controller('/v1/circuits')
 export class CircuitsController {
-    constructor(private readonly circuitsService: CircuitsService) {}
+    constructor(
+        private readonly circuitsService: CircuitsService
+    ) {}
 
-    @Get(':id')
-    @ApiOperation({ summary: 'Get circuit by ID' })
-    @ApiResponse({ status: HttpStatus.OK, type: CreateCircuitDto, description: 'The circuit has been successfully retrieved.'})
-    async getCircuitbyId(
-        @Param('id') id: string
+    @Get(':circuitId')
+    @ApiOperation({ summary: 'Get circuit by circuit ID' })
+    @ApiResponse({ status: HttpStatus.OK, type: CircuitResponseDto, description: 'The circuit has been successfully retrieved.'})
+
+    async getCircuitbyCircuitId(
+        @Param('circuitId') circuitId: string
     ): Promise<CircuitResponseDto | null> {
-        const respone: CircuitResponseDto | null = await this.circuitsService.getCircuitById(id);
-        return respone;
+        const response: CircuitResponseDto = await this.circuitsService.getCircuitByCircuitId(circuitId);
+        
+        return response;
     }
 
     @Post()
     @ApiOperation({ summary: 'Create circuit' })
     @ApiResponse({ status: HttpStatus.CREATED, type: CreateCircuitDto, description: 'The circuit has been successfully created.'})
     async createCircuit(@Body() createCircuitDto: CreateCircuitDto): Promise<CreateCircuitDto> {
-        const respone = await this.circuitsService.createCircuit(createCircuitDto);
-        return respone;
+        const response = await this.circuitsService.createCircuit(createCircuitDto);
+        return response;
     }
 
     @Delete(':id')

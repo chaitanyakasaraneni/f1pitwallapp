@@ -1,0 +1,20 @@
+{
+    "post": [
+        {
+            "circuitId": "albert_park",
+            "circuitName": "Albert Park Grand Prix Circuit",
+            "locationCountry": "Melbourne, Australia",
+            "lengthKm": 5.278,
+            "races": [],
+            "raceResults": []
+        },
+        {
+            "circuitId": "sepang",
+            "circuitName": "Sepang International Circuit",
+            "locationCountry": "Kuala Lumpur, Malaysia",
+            "lengthKm": 5.543,
+            "races": [],
+            "raceResults": []
+        }
+    ]
+}

@@ -6,5 +6,6 @@ module.exports = {
         username: 'root',
         password: 'root',
         database: 'f1pitwallapp-db',
-    }
+    },
+    logging: true
 }
